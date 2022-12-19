@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carousel</title>
+  <link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+
+  <input id="background" type="file">
+  <input id="background" type="file">
+  <input id="background" type="file">
+  <input id="background" type="file">
+  <input id="background" type="file">
+
+  <input type="text" placeholder="Link" id="link">
+  <input type="text" placeholder="Link" id="link">
+  <input type="text" placeholder="Link" id="link">
+  <input type="text" placeholder="Link" id="link">
+  <input type="text" placeholder="Link" id="link">
+  <button id="aLinks">Update Links</button>
+
+  <div class="gallery">
+    <div class="gallery-container">
+      <a href="" class = "directLink"><div class="gallery-item gallery-item-1"><img  id = "sld" src="http://fakeimg.pl/300/?text=1" data-index="1"> </div></a>
+      <a href="" class = "directLink"><div class="gallery-item gallery-item-2"><img  id = "sld" src="http://fakeimg.pl/300/?text=2" data-index="2"> </div></a>
+      <a href="" class = "directLink"><div class="gallery-item gallery-item-3" ><img id = "sld" src="http://fakeimg.pl/300/?text=3" data-index="3"></div></a>
+      <a href="" class = "directLink"><div class="gallery-item gallery-item-4"><img  id = "sld" src="http://fakeimg.pl/300/?text=4" data-index="4"></div></a>
+      <a href="" class = "directLink"><div class="gallery-item gallery-item-5"><img  id = "sld" src="http://fakeimg.pl/300/?text=5" data-index="5"> </div></a>
+    </div>
+    <div class="gallery-controls"></div>
+  </div>
+
+  <script>
+    function isValidHttpUrl(string) {
+      let url;
+      
+      try {
+        url = new URL(string);
+      } catch (_) {
+        return false;  
+      }
+    
+      return url.protocol === "http:" || url.protocol === "https:";
+    }
+
+    var boxes = document.querySelectorAll("#sld");
+
+    let imgs = document.querySelectorAll('#background');
+    for (var i = 0; i < imgs.length; i++) {
+        (function(i) {
+            imgs[i].addEventListener('change', function(event) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  boxes[i].src = e.target.result;
+              }
+              reader.readAsDataURL(imgs[i].files[0]);
+            });
+        })(i);
+    }
+    var button = document.querySelector("#aLinks");
+    var aS = document.querySelectorAll(".directLink");
+    button.addEventListener('click', function() {
+      var linkInputs = document.querySelectorAll('#link');
+      for(var i = 0; i < linkInputs.length; i++){
+        var result = isValidHttpUrl(linkInputs[i].value);
+        if(result!=false){
+          aS[i].href = linkInputs[i].value;
+        }else{
+          aS[i].href = "#";
+        }
+      }
+    })
+  </script>
+
+  <script src="carousel.js"></script>
+</body>
+</html>

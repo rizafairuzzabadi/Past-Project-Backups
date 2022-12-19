@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turkcell Ad Designer Suit</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition register-page">
+  <div class="register-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <b>Turkcell Ad Designer Suit</b></a>
+      </div>
+      <div class="card-body">
+        <p class="login-box-msg">Register a new membership</p>
+
+        <!-- <form action="/register" method="post"> -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="name" placeholder="Company Name">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="surname" placeholder="Company Kind">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="username" placeholder="Username">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" id="email" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" id="password" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" id="password_check" placeholder="Retype password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <select class="browser-default custom-select" aria-label="Default select example" id="role">
+          <option selected>Registration Purpose</option>
+          <option value="1">Visitor</option>
+          <option value="2">Advertiser</option>
+          <option value="3">Publisher</option>
+        </select>
+        <p></p>
+        <div class="row">
+
+          <div class="col-8 ml-md-auto">
+            <button type="submit" id="sendButton" class="btn btn-primary btn-block ">
+
+
+              Register
+
+            </button>
+            
+            <button type="submit" id="sendButton1" class="btn btn-primary btn-block ">
+              I already have an account
+            </button>
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- </form> -->
+
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+
+  <!-- jQuery -->
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+
+
+  <script>
+    const result = listenResponse("onRegister");
+
+    async function listenResponse(channel) {
+      return await new Promise(res => {
+        window.api.ipc.on(channel, (event, ...data) => {
+          console.log("On data", channel, event, data)
+          res(data)
+        });
+      });
+    }
+
+    let sendButton = document.querySelector("#sendButton");
+    let name1 = document.querySelector("#name");
+    let surname = document.querySelector("#surname");
+    let username = document.querySelector("#username");
+    let email = document.querySelector("#email");
+    let password = document.querySelector("#password");
+    let password_check = document.querySelector("#password_check");
+    let role = document.querySelector("#role")
+
+
+    sendButton.addEventListener("click", async () => {
+      let name_ = name1.value
+      let surname_ = surname.value
+      let username_ = username.value
+
+      let email_ = email.value
+      let password_ = password.value
+      let password_check_ = password_check.value
+
+      let role_ = role.value
+
+      window.api.ipc.send('register', {
+        name: name_,
+        surname: surname_,
+        username: username_,
+        email: email_,
+        password: password_,
+        role: role_,
+        password_check: password_check_,
+      })
+      const result = await listenResponse("onRegister");
+      console.log("aaaaaaaaaaaa", result);
+
+      if (result[0] == true) {
+        window.location.href = "login.html"
+      }
+    })
+
+    sendButton1.addEventListener("click", async () => {
+      window.location.href = "login.html"
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>

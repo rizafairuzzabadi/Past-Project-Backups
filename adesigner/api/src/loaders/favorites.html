@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turkcell Ad Suite | Favorites</title>
+
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
+  <!-- Our style -->
+  <link rel="stylesheet" href="../../../dist/css/our.css">
+  <!-- jQuery -->
+  <script src="../../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../../dist/js/adminlte.min.js"></script>
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+  <style>
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      left: 50%;
+      margin-left: -60px;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+  </style>
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="starter.html" class="nav-link">Home</a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <li class="nav-item">
+          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+            <i class="fas fa-search"></i>
+          </a>
+          <div class="navbar-search-block">
+            <form class="form-inline">
+              <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+            <i class="fas fa-th-large"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4"  style = "height: 110%; position: fixed">
+      <!-- Brand Logo -->
+      <a href="starter.html" class="brand-link">
+        <img src="../../../dist/img/logo.jpg" alt="Turkcell Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text font-weight-light">Turkcell Ad Suite</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Pages
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="./starter.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Browse Template</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./favorites.html" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Favorites</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="../../../homepage.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Log Out</p>
+                  </a>
+                </li>
+                <li class="nav-item" style="margin-top: 90%">
+                  <div class="card">
+                    <img src="../../../dist/img/user1.png" style="width:30%; margin-top:0px">
+                    <h2 id="username_profile"></h2>
+                    <p class="title" id="surname_profile"></p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <section class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Favorites</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item ">Favorites</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card-header">
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Categories</option>
+                      <option>Alaska</option>
+                      <option>California</option>
+                      <option>Delaware</option>
+                      <option>Tennessee</option>
+                      <option>Texas</option>
+                      <option>Washington</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row row-cols-3" id="favTemplateList">
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+  </div>
+  <!-- /.container-fluid -->
+
+  <!-- /.col-md-6 -->
+  <!-- /.row -->
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- ./wrapper -->
+
+  <!-- REQUIRED SCRIPTS -->
+
+
+  <script>
+    /*
+    window.addEventListener('DOMContentLoaded', function() {
+      let FavTempList = document.getElementById("favTemplateList");
+      let FavTempListVal = FavTempList.value
+      //let FavTempListVal = FavTempList.value;
+      console.log("heeelp")
+      console.log(FavTempList);
+      window.api.ipc.send('fav', {
+        FavTempList : FavTempListVal,
+      })
+    })
+    */
+
+
+
+    // const resultForFav = await listenResponseforFav("onFavPage");
+    // console.log(resultForFav);
+    // async function listenResponseforFav(channel) {
+    //   return await new Promise(res => {
+    //     window.api.ipc.on(channel, (event, ...data) => {
+    //       console.log("On data", channel, event, data)
+    //       if (channel == "onFavPage") {
+    //         console.log("253 favorites")
+    //       }
+    //       res(data)
+    //     });
+    //   });
+    // }
+
+
+    // let FavTempList = document.getElementById("favTemplateList");
+    // window.onload = async function () {
+    //   console.log("253 favorites")
+    //   const resultForFav = await listenResponse("onFavPage");
+    //   if (resultForFav == true) {
+    //     window.api.ipc.send('fav', {
+    //       FavTempList: FavTempList,
+    //     })
+    //   }
+    // }
+
+
+
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
+  <script>
+
+    function mouseClickLike(y) {
+      var x1 = document.getElementById("like" + y);
+      if (x1.style.color == "red") {
+        x1.style.color = "white";
+
+        window.api.ipc.send('like', {
+          id: y,
+          liked: false,
+        })
+
+      }
+      else {
+        x1.style.color = "red";
+        window.api.ipc.send('like', {
+          id: y,
+          liked: true,
+        })
+      }
+
+
+    }
+
+
+
+    function mouseOver(y) {
+
+      var x1 = document.getElementById("demo" + y);
+      x1.style.color = "#2F4F4F";
+      x1.title = 'Download';
+
+    }
+
+    function mouseOut(y) {
+
+      document.getElementById("demo" + y).style.color = "white";
+
+    }
+
+
+    function mouseOverLike(y) {
+
+
+      var x1 = document.getElementById("like" + y);
+      x1.style.color = "red";
+      x1.title = 'Like';
+
+
+    }
+
+    function mouseOutLike(y) {
+
+      document.getElementById("like" + y).style.color = "white";
+
+    }
+    function mouseOverShare(y) {
+
+
+      var x1 = document.getElementById("share" + y);
+      x1.style.color = "#56d2cf";
+      x1.title = 'Share';
+
+    }
+    function mouseOutShare(y) {
+
+      document.getElementById("share" + y).style.color = "white";
+
+    }
+
+
+    function mouseOverEye(y) {
+
+
+      var x1 = document.getElementById("eye" + y);
+      x1.style.color = "#a4c000";
+      x1.title = 'See';
+
+
+    }
+    function mouseOutEye(y) {
+
+      document.getElementById("eye" + y).style.color = "white";
+
+    }
+
+  </script>
+
+  <script src="mongodb.js"></script>
+  <script src="starter.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', renderFavTemplates, false);
+
+  </script>
+
+</body>
+
+
+</html>

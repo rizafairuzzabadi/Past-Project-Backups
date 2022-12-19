@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Cube Slider</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <input id="cubeNewImage" type="file" />
+    <input id="cubeNewImage" type="file" />
+    <input id="cubeNewImage" type="file" />
+    <input id="cubeNewImage" type="file" />
+
+    <input type="text" placeholder="Link" id="link" />
+    <input type="text" placeholder="Link" id="link" />
+    <input type="text" placeholder="Link" id="link" />
+    <input type="text" placeholder="Link" id="link" />
+
+    <input type="text" id="title" placeholder="Header1" />
+    <input type="text" id="title" placeholder="Header2" />
+    <input type="text" id="title" placeholder="Header3" />
+    <input type="text" id="title" placeholder="Header4" />
+    <button id="aLinks">Update Links</button>
+
+    <div class="wrapper">
+      <div class="container">
+        <div class="image-cube">
+          <div class="front">
+            <div class="gfg">
+              <a href="" class="directLink">
+                <img class="cubeImage" src="image-2.jpg" />
+                <h3 class="first-txt"></h3>
+              </a>
+            </div>
+          </div>
+          <div class="right">
+            <div class="gfg">
+              <a href="" class="directLink">
+                <img class="cubeImage" src="image-1.jpg" />
+                <h3 class="first-txt"></h3>
+              </a>
+            </div>
+          </div>
+          <div class="back">
+            <div class="gfg">
+              <a href="" class="directLink">
+                <img class="cubeImage" src="image-3.jpg" />
+                <h3 class="first-txt"></h3>
+              </a>
+            </div>
+          </div>
+          <div class="left">
+            <div class="gfg">
+              <a href="" class="directLink">
+                <img class="cubeImage" src="image-4.jpg" />
+                <h3 class="first-txt"></h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button id="prev">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button id="next">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <script>
+      function isValidHttpUrl(string) {
+        let url;
+
+        try {
+          url = new URL(string);
+        } catch (_) {
+          return false;
+        }
+
+        return url.protocol === "http:" || url.protocol === "https:";
+      }
+
+      var button = document.querySelector("#aLinks");
+      var aS = document.querySelectorAll(".directLink");
+      button.addEventListener("click", function () {
+        var linkInputs = document.querySelectorAll("#link");
+        for (var i = 0; i < linkInputs.length; i++) {
+          var result = isValidHttpUrl(linkInputs[i].value);
+          if (result != false) {
+            aS[i].href = linkInputs[i].value;
+          } else {
+            aS[i].href = "#";
+          }
+        }
+      });
+      var boxes2 = document.querySelectorAll(".first-txt");
+      var boxes = document.querySelectorAll(".cubeImage");
+      let imgs = document.querySelectorAll("#cubeNewImage");
+      let inputs = document.querySelectorAll("#title");
+
+      for (var i = 0; i < inputs.length; i++) {
+        (function (i) {
+          inputs[i].addEventListener("change", function () {
+            boxes2[i].innerText = inputs[i].value;
+          });
+        })(i);
+      }
+      for (var i = 0; i < imgs.length; i++) {
+        (function (i) {
+          imgs[i].addEventListener("change", function (event) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              boxes[i].src = e.target.result;
+            };
+            reader.readAsDataURL(imgs[i].files[0]);
+          });
+        })(i);
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

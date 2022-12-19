@@ -1,0 +1,569 @@
+.turkcellblue{
+  background-color: #2951a7 !important;
+}
+
+.theme-grey{
+  background-color: #383838 !important;
+}
+
+.componentmenutext{
+  font-size:12px !important;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.b-example-divider {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.bi {
+  vertical-align: -.125em;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.dropdown-toggle { outline: 0; }
+
+.nav-flush .nav-link {
+  border-radius: 0;
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  background-color: transparent;
+  border: 0;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(255, 255, 255, 0.85);
+  background-color: #d2f4ea;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(255, 255, 255, 0.85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #d2f4ea;
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.fw-semibold { font-weight: 600; }
+.lh-tight { line-height: 1.25; }
+
+/* Слайдер */
+.slider{
+max-width: 90%;
+position: relative;
+margin: auto;
+height: 300px;
+}
+.slideLink {
+text-decoration: none;
+color: black;
+}
+/* Картинка масштабируется по отношению к родительскому элементу */
+.slider .item {
+object-fit: cover;
+width: 100%;
+height: 300px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-T-qa1uTPU2O0DK1QXl9UfYV1mQPCgneQqg&usqp=CAU");
+background-size: cover;
+background-repeat: no-repeat;
+}
+h1 {
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+/* Кнопки вперед и назад */
+.slider .previous, .slider .next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+margin-top: -22px;
+padding: 16px;
+color: white;
+font-weight: bold;
+font-size: 16px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+}
+.slider .next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+/* При наведении на кнопки добавляем фон кнопок */
+.slider .previous:hover,
+.slider .next:hover {
+background-color: rgba(0, 0, 0, 0.2);
+}
+/* Анимация слайдов */
+.slider .item {
+animation-name: fade;
+animation-duration: 1.5s;
+}
+@keyframes fade {
+from {
+    opacity: 0.4
+}
+to {
+    opacity: 1
+}
+}
+
+* {
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size: 20px;
+}
+
+.main-menu:hover,
+nav.main-menu.expanded {
+width: 250px;
+overflow: visible;
+}
+
+.main-menu {
+background: #212121;
+border-right: 1px solid #e5e5e5;
+position: fixed;
+top: 0;
+bottom: 0;
+height: 100%;
+left: 0;
+width: 60px;
+overflow: hidden;
+-webkit-transition: width 0.05s linear;
+transition: width 0.05s linear;
+-webkit-transform: translateZ(0) scale(1, 1);
+z-index: 1000;
+}
+
+.main-menu > ul {
+margin: 7px 0;
+}
+
+.main-menu li {
+position: relative;
+display: block;
+width: 250px;
+}
+
+.main-menu li > a {
+position: relative;
+display: table;
+border-collapse: collapse;
+border-spacing: 0;
+color: #999;
+font-family: arial;
+font-size: 14px;
+text-decoration: none;
+-webkit-transform: translateZ(0) scale(1, 1);
+-webkit-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+
+.main-menu .nav-icon {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size: 18px;
+}
+
+.main-menu .nav-text {
+position: relative;
+display: table-cell;
+vertical-align: middle;
+width: 190px;
+font-family: "Titillium Web", sans-serif;
+}
+
+.main-menu > ul.logout {
+position: absolute;
+left: 0;
+bottom: 0;
+}
+
+.no-touch .scrollable.hover {
+overflow-y: hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y: auto;
+overflow: visible;
+}
+
+a:hover,
+a:focus {
+text-decoration: none;
+}
+
+nav {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+nav ul,
+nav li {
+outline: 0;
+margin: 0;
+padding: 0;
+}
+.main-menu li:hover > a,
+nav.main-menu li.active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+color: #fff;
+background-color: #5fa2db;
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+@font-face {
+font-family: "Titillium Web";
+font-style: normal;
+font-weight: 300;
+src: local("Titillium WebLight"), local("TitilliumWeb-Light"),
+  url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff)
+    format("woff");
+}
+
+/* Слайдер */
+.slider{
+max-width: 90%;
+position: relative;
+margin: auto;
+height: 300px;
+}
+.slideLink {
+text-decoration: none;
+color: black;
+}
+/* Картинка масштабируется по отношению к родительскому элементу */
+.slider .item {
+object-fit: cover;
+width: 100%;
+height: 300px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-T-qa1uTPU2O0DK1QXl9UfYV1mQPCgneQqg&usqp=CAU");
+background-size: cover;
+background-repeat: no-repeat;
+}
+h1 {
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+/* Кнопки вперед и назад */
+.slider .previous, .slider .next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+margin-top: -22px;
+padding: 16px;
+color: white;
+font-weight: bold;
+font-size: 16px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+}
+.slider .next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+/* При наведении на кнопки добавляем фон кнопок */
+.slider .previous:hover,
+.slider .next:hover {
+background-color: rgba(0, 0, 0, 0.2);
+}
+/* Анимация слайдов */
+.slider .item {
+animation-name: fade;
+animation-duration: 1.5s;
+}
+@keyframes fade {
+from {
+    opacity: 0.4
+}
+to {
+    opacity: 1
+}
+}
+
+* {
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size: 20px;
+}
+
+.main-menu:hover,
+nav.main-menu.expanded {
+width: 250px;
+overflow: visible;
+}
+
+.main-menu {
+background: #212121;
+border-right: 1px solid #e5e5e5;
+position: fixed;
+top: 0;
+bottom: 0;
+height: 100%;
+left: 0;
+width: 60px;
+overflow: hidden;
+-webkit-transition: width 0.05s linear;
+transition: width 0.05s linear;
+-webkit-transform: translateZ(0) scale(1, 1);
+z-index: 1000;
+}
+
+.main-menu > ul {
+margin: 7px 0;
+}
+
+.main-menu li {
+position: relative;
+display: block;
+width: 250px;
+}
+
+.main-menu li > a {
+position: relative;
+display: table;
+border-collapse: collapse;
+border-spacing: 0;
+color: #999;
+font-family: arial;
+font-size: 14px;
+text-decoration: none;
+-webkit-transform: translateZ(0) scale(1, 1);
+-webkit-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+
+.main-menu .nav-icon {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size: 18px;
+}
+
+.main-menu .nav-text {
+position: relative;
+display: table-cell;
+vertical-align: middle;
+width: 190px;
+font-family: "Titillium Web", sans-serif;
+}
+
+.main-menu > ul.logout {
+position: absolute;
+left: 0;
+bottom: 0;
+}
+
+.no-touch .scrollable.hover {
+overflow-y: hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y: auto;
+overflow: visible;
+}
+
+a:hover,
+a:focus {
+text-decoration: none;
+}
+
+nav {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+nav ul,
+nav li {
+outline: 0;
+margin: 0;
+padding: 0;
+}
+.main-menu li:hover > a,
+nav.main-menu li.active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+color: #fff;
+background-color: #5fa2db;
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+@font-face {
+font-family: "Titillium Web";
+font-style: normal;
+font-weight: 300;
+src: local("Titillium WebLight"), local("TitilliumWeb-Light"),
+  url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff)
+    format("woff");
+}
+
+
+
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  z-index: 1000;
+  top: 100px;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+
+/* #canvas {
+  width: 10000px;
+  height: 10000px;
+  background-color: red;
+  z-index: 1;
+} */
+
+.p {
+  position: absolute;
+  top: 500;
+  left: 400;
+}
+#mydivheader{
+  height: 2px;
+  opacity: 0;
+  font-size: 2px;
+}
+img{
+  width: 300px;
+  height: 300px;
+}

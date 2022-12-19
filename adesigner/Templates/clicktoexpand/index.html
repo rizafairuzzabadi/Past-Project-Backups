@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to expand</title>
+</head>
+<body>
+    
+    <input id="expandNewImage" type="file">
+    <input type="text" placeholder="Title" id="TitleInput">
+    <input type="text" placeholder="Link" id="expandlink">
+
+    <main>
+        <h1 class="mainTitle">Some Example Text</h1>
+        <input style ="visibility: hidden;" id="toggle" type="checkbox" >
+        <label for="toggle" class="toggleButton">Click to Expand</label>
+        
+        <div id="expand">
+            <a href="#">
+            <div class="ImageDiv">
+                <img src="image.png" alt="">
+            </div>
+            </a>
+        </div>
+    </main>
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+        var button = document.getElementsByClassName("toggleButton")[0];
+        button.addEventListener("click", function() {
+            var img = document.querySelector(".ImageDiv img");
+            if(img.style.display.length == 0 || img.style.display.length == 4){
+                console.log(img.style.display)
+                console.log("t1");
+                img.style.display = "block";
+            }else{
+                console.log(img.style.display.length)
+                console.log("t2");
+                img.style.display = "none";
+            }
+        });
+
+        var titleInput = document.querySelectorAll("#TitleInput")[0];
+        titleInput.addEventListener('change', function(event) {
+            document.querySelectorAll(".mainTitle")[0].textContent = titleInput.value;
+        });
+
+
+        var imageLoader = document.querySelectorAll("#expandNewImage")[0];
+        var ExImage = document.querySelectorAll(".ImageDiv img")[0];
+
+        imageLoader.addEventListener('change', function(event) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                ExImage.src = e.target.result;
+            }
+            reader.readAsDataURL(imageLoader.files[0]);
+        });
+
+        function isValidHttpUrl(string) {
+            let url;
+            
+            try {
+              url = new URL(string);
+            } catch (_) {
+              return false;  
+            }
+          
+            return url.protocol === "http:" || url.protocol === "https:";
+        }
+        var LinkInput = document.querySelectorAll("#expandlink")[0];
+        var ExLink = document.querySelectorAll("#expand a")[0];
+        LinkInput.addEventListener('change', function(event) {
+            var result = isValidHttpUrl(LinkInput.value);
+            if(result!=false){
+                console.log("Changed");
+                ExLink.href = LinkInput.value;
+            }else{
+                ExLink.href = "#";
+            }
+        });
+
+    </script>
+</body>
+</html>

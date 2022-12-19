@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input id="background" type="file">
+    <input id="background" type="file">
+    <input id="background" type="file">
+    <input id="background" type="file">
+    <input id="background" type="file">
+
+    <input type="text" id="title" placeholder="Header1">
+    <input type="text" id="title" placeholder="Header2">
+    <input type="text" id="title" placeholder="Header3">
+    <input type="text" id="title" placeholder="Header4">
+    <input type="text" id="title" placeholder="Header5">
+
+    <input type="text" id="directLink" placeholder="DirectLink1">
+    <input type="text" id="directLink" placeholder="DirectLink2">
+    <input type="text" id="directLink" placeholder="DirectLink3">
+    <input type="text" id="directLink" placeholder="DirectLink4">
+    <input type="text" id="directLink" placeholder="DirectLink5">
+
+    <button id="aLinks">Update Links</button>
+
+    <div class="container">
+        <div class="box"> <a href="" class = "SplitLink">  <h2> T - 1 </h2> </a> </div> 
+        <div class="box"> <a href="" class = "SplitLink"> </a><h2> T - 2 </h2>  </a> </div> 
+        <div class="box"> <a href="" class = "SplitLink"></a> <h2> T - 3 </h2> </a> </div> 
+        <div class="box">  <a href="" class = "SplitLink"></a><h2> T - 4 </h2> </a> </div> 
+        <div class="box"> <a href="" class = "SplitLink"></a> <h2> T - 5 </h2> </a> </div> 
+    </div>
+    <script>
+        function isValidHttpUrl(string) {
+            let url;
+    
+            try {
+              url = new URL(string);
+            } catch (_) {
+              return false;
+            }
+    
+            return url.protocol === "http:" || url.protocol === "https:";
+          }
+          
+        var boxes = document.querySelectorAll(".box");
+        let inputs = document.querySelectorAll('#title');
+        
+        for (var i = 0; i < inputs.length; i++) {
+        (function(i) {
+            inputs[i].addEventListener('change', function() {
+                boxes[i].children[0].textContent = inputs[i].value;
+            });
+        })(i);
+        }
+
+        let imgs = document.querySelectorAll('#background');
+        for (var i = 0; i < imgs.length; i++) {
+            (function(i) {
+                imgs[i].addEventListener('change', function() {
+                    var backgroundFile = imgs[i].files[0];
+                    boxes[i].style.backgroundImage =  "url(" + URL.createObjectURL(backgroundFile) + ")";
+                });
+            })(i);
+        }
+
+        function changeBackground() {
+            var backgroundFile = document.getElementById("background").files[0];
+            document.querySelector("body").style.backgroundImage = "url(" + URL.createObjectURL(backgroundFile) + ")";
+        }
+
+
+        let directLinkInputs = document.querySelectorAll('#directLink');
+
+
+        var button = document.querySelectorAll("#aLinks")[0];
+        var aS = document.querySelectorAll(".SplitLink");
+        button.addEventListener("click", function () {
+            console.log("a");
+            for (var i = 0; i < directLinkInputs.length; i++) {
+                var result = isValidHttpUrl(directLinkInputs[i].value);
+                if (result != false) {
+                    aS[i].href = directLinkInputs[i].value;
+                } else {
+                    aS[i].href = "#";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
